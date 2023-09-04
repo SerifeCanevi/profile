@@ -1,0 +1,72 @@
+GET http://localhost:8080/account/getAccountById HTTP/1.1
+Content-Type: application/json
+
+{
+    "accountId": 1
+}
+
+###
+
+GET http://localhost:8080/account/getAccountByUsername HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "ethereal"
+}
+
+###
+
+POST http://localhost:8080/account/createAccount HTTP/1.1
+Content-Type: application/json
+
+{
+    "account" : {
+        "username": "ethereal",
+        "password": "123",
+        "email": "yahyabekircanevi2@gmail.com"
+    }
+}
+
+###
+
+POST http://localhost:8080/account/validateCreatedAccount/1 HTTP/1.1
+###
+
+PUT http://localhost:8080/account/updateAccount HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "account" : {
+        "username": "asd",
+        "password": "321",
+        "email": "asd@gmail.com"
+    }
+}
+
+###
+
+DELETE http://localhost:8080/account/deleteAccount HTTP/1.1
+Content-Type: application/json
+
+{
+    "accountId": 1
+}
+
+###
+
+GET http://localhost:8080/account/getAccountStatus HTTP/1.1
+Content-Type: application/json
+
+{
+    "accountId": 1
+}
+
+###
+
+GET http://localhost:8080/account/getAccountRole HTTP/1.1
+Content-Type: application/json
+
+{
+    "accountId": 1
+}

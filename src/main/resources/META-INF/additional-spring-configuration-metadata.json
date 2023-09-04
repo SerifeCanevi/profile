@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "token.algorithm",
+      "type": "java.lang.String",
+      "description": "Token Generation Algorithm"
+    },
+    {
+      "name": "token.secretKey",
+      "type": "java.lang.String",
+      "description": "Token Generation Secret Key"
+    },
+  ]
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            background-color: #f2f2f2;
+            padding: 10px 0;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Create Account Verification</h1>
+        </div>
+        <p>Your account verification is in progress. Are you ready to proceed?</p>
+        <div class="button-container">
+            <form action="http://localhost:8080/account/validateCreatedAccount/token" method="get">
+                <button class="button" type="submit">Verify Account</button>
+            </form>
+        </div>
+        <p>This verification process will expire in 5 minutes.</p>
+    </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Spring Boot Profile Application
 
-This is a Spring Boot profile application that demonstrates how to manage different application configurations based on profiles.
+This is a Spring Boot profile application that demonstrates how to manage profile section of an application.
 
 ## Prerequisites
 
@@ -34,11 +34,4 @@ Before you begin, ensure you have met the following requirements:
    ```shell
    java -jar target/profile.jar --spring.profiles.active=dev
    ```
-
-## Profiles
-
-This application supports multiple profiles, each with its own configuration. You can set the active profile using the --spring.profiles.active property when running the application.
-
-- `dev`: Development profile with development-specific configuration.
-- `prod`: Production profile with production-specific configuration.
 

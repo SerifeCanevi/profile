@@ -1,44 +1,47 @@
 package com.canevi.profile.dao.model;
 
-import com.canevi.profile.domain.enums.AccountRole;
-import com.canevi.profile.domain.enums.AccountStatus;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @Entity
-@Table(name = "account")
+@Table(name = "ACCOUNT")
 public class Account {
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "account_seq")
-    @SequenceGenerator(name = "account_seq", sequenceName = "account_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
-    @Column
-    private String username;
-    @Column
-    private String password;
-    @Column
-    private String email;
-    @Column
-    private String role;
-    @Column
-    private String status;
 
-    public void setStatus(AccountStatus status) {
-        this.status = status.getValue();
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_DETAIL_ID")
+    private UserDetail userDetail;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<AccountRole> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<AccountStatus> statuses = new HashSet<>();
+
+    public void addRole(AccountRole role) {
+        role.setAccount(this);
+        roles.add(role);
     }
 
-    public void setRole(AccountRole role) {
-        this.role = role.getValue();
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void addStatus(AccountStatus status) {
+        status.setAccount(this);
+        statuses.add(status);
     }
 }

@@ -9,6 +9,6 @@
       "name": "token.secretKey",
       "type": "java.lang.String",
       "description": "Token Generation Secret Key"
-    },
+    }
   ]
 }

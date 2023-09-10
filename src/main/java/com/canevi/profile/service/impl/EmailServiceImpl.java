@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import com.canevi.profile.service.exception.AccountUpdateFailedException;
 import com.canevi.profile.service.intf.EmailService;
 
 import jakarta.mail.MessagingException;
@@ -23,7 +22,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public void sendHtmlEmail(String to, String subject, String templateName, String token, Context context)
-            throws MessagingException, InterruptedException, TimeoutException, AccountUpdateFailedException {
+            throws MessagingException, InterruptedException, TimeoutException {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(to);

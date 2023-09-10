@@ -6,8 +6,18 @@ import lombok.Getter;
 
 @Getter
 public class BaseResponse {
-    private String message = "";
-    private Integer status = HttpStatus.OK.value();
+    private String message;
+    private Integer status;
+
+    public BaseResponse() {
+        this.message = "";
+        this.status = HttpStatus.OK.value();
+    }
+
+    public BaseResponse(String message, HttpStatus status) {
+        this.message = message;
+        this.status = status.value();
+    }
 
     public void setMessage(String message) {
         this.message = message != null ? message : "";

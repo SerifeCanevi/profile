@@ -6,17 +6,31 @@ import lombok.Data;
 
 @Data
 public class Token {
-    private Long id;
-    private Date startingDate;
+    private String data;
+    private long startingDateInMilliseconds;
+
+    public Token(String data) {
+        this.data = data;
+    }
+
+    public Date getStartingDate() {
+        return new Date(startingDateInMilliseconds);
+    }
+
+    public void setStartingDate(Date startingDate) {
+        this.startingDateInMilliseconds = startingDate.getTime();
+    }
 
     public String toString() {
-        return id + "-" + startingDate.getTime();
+        return startingDateInMilliseconds + "-" + data;
     }
     public static Token fromString(String token) {
         String[] parts = token.split("-");
-        Token thisToken = new Token();
-        thisToken.id = Long.parseLong(parts[0]);
-        thisToken.startingDate = new Date(Long.parseLong(parts[1]));
+        if(parts.length > 1) {
+            throw new IllegalArgumentException("Invalid token");
+        }
+        Token thisToken = new Token(parts[1]);
+        thisToken.startingDateInMilliseconds = Long.parseLong(parts[0]);
         return thisToken;
     }
 }

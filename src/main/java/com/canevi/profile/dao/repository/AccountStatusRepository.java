@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.canevi.profile.dao.model.AccountStatus;
 
 public interface AccountStatusRepository extends JpaRepository<AccountStatus, Long> {
-    @Query("SELECT a FROM AccountStatus a WHERE a.account.id = :accountId")
+    @Query("SELECT a FROM AccountStatus a WHERE a.accountId = :accountId")
     Optional<AccountStatus> findByAccountId(Long accountId);
 }

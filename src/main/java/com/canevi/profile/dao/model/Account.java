@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -35,16 +36,11 @@ public class Account {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<AccountRole> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<AccountStatus> statuses = new HashSet<>();
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private AccountStatus status;
 
     public void addRole(AccountRole role) {
         role.setAccount(this);
         roles.add(role);
-    }
-
-    public void addStatus(AccountStatus status) {
-        status.setAccount(this);
-        statuses.add(status);
     }
 }

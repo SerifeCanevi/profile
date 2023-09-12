@@ -33,4 +33,9 @@ public class Token {
         thisToken.startingDateInMilliseconds = Long.parseLong(parts[0]);
         return thisToken;
     }
+
+    public Date getExpirationDate() {
+        /// next day
+        return new Date(startingDateInMilliseconds + 1000 * 60 * 60 * 24);
+    }
 }

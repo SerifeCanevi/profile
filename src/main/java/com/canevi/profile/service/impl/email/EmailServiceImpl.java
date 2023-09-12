@@ -1,4 +1,4 @@
-package com.canevi.profile.service.impl;
+package com.canevi.profile.service.impl.email;
 
 import java.util.concurrent.TimeoutException;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import com.canevi.profile.service.intf.EmailService;
+import com.canevi.profile.service.intf.email.EmailService;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -33,5 +33,15 @@ public class EmailServiceImpl implements EmailService {
         helper.setText(newHtmlContent, true);
 
         javaMailSender.send(message);
+    }
+
+    @Override
+    public void sendEmail(String email, String title, String templateName, String token) 
+        throws MessagingException, InterruptedException, TimeoutException {
+        
+        Context context = new Context();
+        context.setVariable("name", "John");
+
+        sendHtmlEmail(email, title, templateName, token, context);
     }
 }

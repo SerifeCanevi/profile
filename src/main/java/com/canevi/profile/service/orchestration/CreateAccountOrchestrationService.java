@@ -2,8 +2,8 @@ package com.canevi.profile.service.orchestration;
 
 import org.springframework.stereotype.Service;
 
-import com.canevi.profile.service.impl.AccountRelatedEmailServiceImpl;
-import com.canevi.profile.service.intf.CreateAccountService;
+import com.canevi.profile.service.impl.email.AccountRelatedEmailServiceImpl;
+import com.canevi.profile.service.intf.account.CreateAccountService;
 import com.canevi.profile.util.generate.TokenGenerator;
 import com.canevi.profile.util.validator.AccountValidator;
 

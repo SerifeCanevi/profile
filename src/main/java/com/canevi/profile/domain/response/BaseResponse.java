@@ -1,5 +1,7 @@
 package com.canevi.profile.domain.response;
 
+import java.util.Date;
+
 import org.springframework.http.HttpStatus;
 
 import lombok.Getter;
@@ -8,15 +10,20 @@ import lombok.Getter;
 public class BaseResponse {
     private String message;
     private Integer status;
+    private Date timestamp;
 
     public BaseResponse() {
-        this.message = "";
-        this.status = HttpStatus.OK.value();
+        this("", HttpStatus.OK);
+    }
+
+    public BaseResponse(String message) {
+        this(message, HttpStatus.OK);
     }
 
     public BaseResponse(String message, HttpStatus status) {
-        this.message = message;
-        this.status = status.value();
+        setMessage(message);
+        setStatus(status);
+        timestamp = new Date();
     }
 
     public void setMessage(String message) {

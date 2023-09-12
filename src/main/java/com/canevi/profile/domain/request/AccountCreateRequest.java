@@ -1,14 +1,14 @@
-package com.canevi.profile.domain.dto;
+package com.canevi.profile.domain.request;
 
 import com.canevi.profile.util.annotation.ValidEmail;
 import com.canevi.profile.util.annotation.ValidPassword;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class AccountDTO {
-    private Long accountId;
-    
+@Getter
+@Setter
+public class AccountCreateRequest {
     private String username;
 
     @ValidPassword

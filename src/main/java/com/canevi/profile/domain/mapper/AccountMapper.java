@@ -14,8 +14,6 @@ public interface AccountMapper {
     AccountDTO genereateAccountDTOFromAccount(Account account);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "roles", ignore = true)
-    @Mapping(target = "status", ignore = true)
     Account genereateAccountFromAccountCreateRequest(AccountCreateRequest request);
     
 }

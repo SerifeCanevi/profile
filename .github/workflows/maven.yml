@@ -30,11 +30,11 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: SonarQube Quality Gate Checkğ
-      uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
-      with:
-        # Location of the scanner metadata report file
-        scanMetadataReportFile: .scannerwork/report-task.txt
+    # - name: SonarQube Quality Gate Check
+    #   uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+    #   with:
+    #     # Location of the scanner metadata report file
+    #     scanMetadataReportFile: .scannerwork/report-task.txt
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph

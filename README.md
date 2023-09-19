@@ -37,6 +37,6 @@ Before you begin, ensure you have met the following requirements:
 
 ## Database Schema
 <p align="center" width="100%">
-  <img src="https://github.com/SerifeCanevi/profile/assets/93770226/bb1dc8e0-f411-4e36-9d9b-b65dba44d9ef" 
+  <img src="https://github.com/SerifeCanevi/profile/blob/9648fd6d255ec0470e4dad95eeab26668d696348/src/main/resources/db/drawSQL-profile-micro.png" 
     width="72%" />
 </p>

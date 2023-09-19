@@ -1,6 +1,10 @@
 package com.canevi.profile.service.orchestration;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -65,6 +69,23 @@ public class CreateAccountOrchestrationService {
         } catch (Exception e) {
             log.info(e.getMessage());
             return new BaseResponse(ACCOUNT_VALIDATION_FAILED, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public List<AccountResponse> paralelCompletableFuture(AccountCreateRequest request) {
+        try {
+            List<AccountCreateRequest> list = Arrays.asList(request, request);
+            List<CompletableFuture<AccountResponse>> futureList = list.stream().map(item -> 
+                CompletableFuture.supplyAsync(() -> 
+                    createAccountService.createAccount(item)))
+            .toList();
+            CompletableFuture<List<AccountResponse>> future = CompletableFuture
+                    .allOf(futureList.toArray(new CompletableFuture[futureList.size()]))
+                    .thenApply(a -> futureList.stream().map(CompletableFuture::join).toList());
+            return future.get(10, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            return null;
         }
     }
 }

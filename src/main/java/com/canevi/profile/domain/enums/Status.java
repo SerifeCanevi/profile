@@ -1,19 +1,17 @@
 package com.canevi.profile.domain.enums;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public enum Status {
-    ACTIVE("Active"),
-    INACTIVE("Inactive"),
-    PENDING("Pending"),
-    BANNED("Banned");
+    ACTIVE(1L,"Active"),
+    INACTIVE(2L,"Inactive"),
+    PENDING(3L,"Pending"),
+    BANNED(4L,"Banned");
 
+    private final Long id;
     private final String value;
-
-    Status(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
 }
 

@@ -29,10 +29,10 @@ public class AccountRoleServiceImpl implements AccountRoleService {
     }
     @Override
     public boolean isAccountHasRole(Long accountId, Role role) {
-        return accountRoleRepository.findIfAccountHasRole(accountId, role.getDisplayName());
+        return accountRoleRepository.findIfAccountHasRole(accountId, role.getValue());
     }
     @Override
     public boolean removeAccountRole(Long accountId, Role role) {
-        return accountRoleRepository.removeRoleFromAccount(accountId, role.getDisplayName());
+        return accountRoleRepository.removeRoleFromAccount(accountId, role.getValue());
     }
 }
